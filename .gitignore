@@ -1,0 +1,16 @@
+# Android / Gradle
+*.iml
+.gradle/
+**/build/
+captures/
+.kotlin/
+
+# Local / secrets
+local.properties
+keystore/
+*.jks
+*.keystore
+
+# Artifacts
+*.apk
+*.aar

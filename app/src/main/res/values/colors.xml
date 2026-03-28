@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_launcher_background">#FF121416</color>
+    <color name="ic_dial_red">#FFB5736A</color>
+    <color name="ic_dial_blue">#FF6B8CAA</color>
+    <color name="ic_dial_green">#FF7A9B7A</color>
+    <color name="ic_dial_yellow">#FFC4B56A</color>
+    <color name="ic_hand_on_red">#FF2E201C</color>
+    <color name="ic_hand_on_blue">#FF1E2830</color>
+    <color name="ic_hand_on_green">#FF1F2E1F</color>
+    <color name="ic_hand_on_yellow">#FF373224</color>
+    <color name="ic_dial_hub">#FFF0EBE6</color>
+    <color name="ic_dial_rim">#4D1A1512</color>
+</resources>

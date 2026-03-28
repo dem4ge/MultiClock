@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- 2×2 chess-clock dials: rim + fill + hub + hands (safe area ~66dp center) -->
+
+    <!-- Top-left -->
+    <path
+        android:fillColor="@color/ic_dial_red"
+        android:pathData="M 30,16 A 14,14 0 1 1 30,44 A 14,14 0 1 1 30,16" />
+    <path
+        android:pathData="M 30,16 A 14,14 0 1 1 30,44 A 14,14 0 1 1 30,16"
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="@color/ic_dial_rim"
+        android:strokeWidth="1.25" />
+    <path
+        android:fillColor="@color/ic_dial_hub"
+        android:pathData="M 30,27.5 A 2.5,2.5 0 1 1 30,32.5 A 2.5,2.5 0 1 1 30,27.5" />
+    <path
+        android:pathData="M30,30 L30,18.5"
+        android:strokeColor="@color/ic_hand_on_red"
+        android:strokeWidth="2.75"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M30,30 L38.5,34"
+        android:strokeColor="@color/ic_hand_on_red"
+        android:strokeWidth="2.15"
+        android:strokeLineCap="round" />
+
+    <!-- Top-right -->
+    <path
+        android:fillColor="@color/ic_dial_blue"
+        android:pathData="M 78,16 A 14,14 0 1 1 78,44 A 14,14 0 1 1 78,16" />
+    <path
+        android:pathData="M 78,16 A 14,14 0 1 1 78,44 A 14,14 0 1 1 78,16"
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="@color/ic_dial_rim"
+        android:strokeWidth="1.25" />
+    <path
+        android:fillColor="@color/ic_dial_hub"
+        android:pathData="M 78,27.5 A 2.5,2.5 0 1 1 78,32.5 A 2.5,2.5 0 1 1 78,27.5" />
+    <path
+        android:pathData="M78,30 L87,30"
+        android:strokeColor="@color/ic_hand_on_blue"
+        android:strokeWidth="2.75"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M78,30 L73.5,40"
+        android:strokeColor="@color/ic_hand_on_blue"
+        android:strokeWidth="2.15"
+        android:strokeLineCap="round" />
+
+    <!-- Bottom-left -->
+    <path
+        android:fillColor="@color/ic_dial_green"
+        android:pathData="M 30,64 A 14,14 0 1 1 30,92 A 14,14 0 1 1 30,64" />
+    <path
+        android:pathData="M 30,64 A 14,14 0 1 1 30,92 A 14,14 0 1 1 30,64"
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="@color/ic_dial_rim"
+        android:strokeWidth="1.25" />
+    <path
+        android:fillColor="@color/ic_dial_hub"
+        android:pathData="M 30,75.5 A 2.5,2.5 0 1 1 30,80.5 A 2.5,2.5 0 1 1 30,75.5" />
+    <path
+        android:pathData="M30,78 L20.5,78"
+        android:strokeColor="@color/ic_hand_on_green"
+        android:strokeWidth="2.75"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M30,78 L36.5,68.5"
+        android:strokeColor="@color/ic_hand_on_green"
+        android:strokeWidth="2.15"
+        android:strokeLineCap="round" />
+
+    <!-- Bottom-right -->
+    <path
+        android:fillColor="@color/ic_dial_yellow"
+        android:pathData="M 78,64 A 14,14 0 1 1 78,92 A 14,14 0 1 1 78,64" />
+    <path
+        android:pathData="M 78,64 A 14,14 0 1 1 78,92 A 14,14 0 1 1 78,64"
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="@color/ic_dial_rim"
+        android:strokeWidth="1.25" />
+    <path
+        android:fillColor="@color/ic_dial_hub"
+        android:pathData="M 78,75.5 A 2.5,2.5 0 1 1 78,80.5 A 2.5,2.5 0 1 1 78,75.5" />
+    <path
+        android:pathData="M78,78 L78,66.5"
+        android:strokeColor="@color/ic_hand_on_yellow"
+        android:strokeWidth="2.75"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M78,78 L69,73.5"
+        android:strokeColor="@color/ic_hand_on_yellow"
+        android:strokeWidth="2.15"
+        android:strokeLineCap="round" />
+</vector>

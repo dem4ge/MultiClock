@@ -1,0 +1,48 @@
+---
+description: MultipleChessClok — Kotlin/Compose стиль, SRP, именование, ограничения
+alwaysApply: true
+---
+
+# MultipleChessClok — правила проекта
+
+## Стек и слои
+
+- **Kotlin**, **Jetpack Compose**, **Material 3**; **без XML-лейаутов** для UI.
+- **minSdk 26**; таймеры и тик только через **kotlinx.coroutines** (`delay`), **не** `Handler`.
+- Слои и пакеты: **`ui` / `presentation` / `domain` / `data`**. Зависимости **внутрь**: UI → presentation → domain; **data** может зависеть от domain (конфиг/дефолты).
+- **MVVM**: один источник правды — **ViewModel** + **`StateFlow`**; domain-состояние не дублировать в Composable без необходимости.
+
+## Принципы (SRP, чистота)
+
+- **SRP:** reducer и use-case-подобная логика — в **domain** (`ChessClockReducer`, `ChessClockRules`, `ChessClockTimerEngine`). ViewModel оркестрирует события, тик и маппинг. Composable — отрисовка и жесты, без бизнес-правил таймера.
+- **Чистый domain:** переходы через **`ChessClockEvent` + `reduce`**, без Android/Compose API.
+- **Идемпотентные переходы:** повторный `reduce` с тем же событием там, где уместно, предсказуем.
+- Тестируемое ядро — **unit-тесты** reducer / форматов / ViewModel; UI-сложное — **androidTest** при необходимости.
+
+## Именование
+
+- Пакет приложения: **`com.multiplechessclok.app`**.
+- Префикс типов/экранов домена и презентации: **`ChessClock*`** (исторически); имя продукта/Gradle: **`MultipleChessClok`** — не «исправлять» на ChessClock в коде без задачи на рефакторинг.
+- События: **`ChessClockEvent`** (sealed); состояние: **`ChessClockDomainState`**, **`ChessClockUiState`**.
+- Стабильные сущности игрока: **`PlayerId`** (value class) для domain; в UI **`String` id** с тем же значением. Reorder из UI предпочтительно через **`ReorderByPlayerIds`**, не только сырые индексы.
+
+## Стиль кода Kotlin / Compose
+
+- **Immutable UI/state:** `data class`, копирование через `copy`; для списков в reducer — новые списки после изменений.
+- **Magic numbers:** длительности, лимиты игроков, шаг тика — в **`ChessClockRules`** или именованных константах domain/data. Локальные **`private val`** для dp/sp в UI — норма.
+- **Compose:** предпочитать **`MaterialTheme.colorScheme`** и типографику для экранов настроек и темы; избегать хардкода `Color(0xFF…)` для контента, согласованного с M3.
+- Жесты: реальные API (**`pointerInput`**, **`awaitLongPressOrCancellation`**, **`drag`**), не заглушки; визуальное перетаскивание — **`graphicsLayer` / `zIndex`**, координаты — согласованный **`LayoutCoordinates`** / **`boundsInRoot`**.
+- Навигация отступов: **`WindowInsets.safeDrawing`** там, где уже принято в корне приложения.
+
+## Ограничения
+
+- Не добавлять **лишние зависимости** (библиотеки “на всякий случай”) без явной необходимости.
+- Не ломать **очерёдность хода**: она задаётся **порядком списка игроков** в domain после reorder.
+- Файлы окружения (**`local.properties`**, секреты) не вносить в правила как обязательные артефакты репозитория.
+- При изменении архитектуры или соглашений — обновлять **`docs/context.md`**.
+
+## Что не делать без запроса
+
+- Проездные рефакторинги несвязанных файлов.
+- Сообщения пользователю “запусти сам” вместо выполнения команд в доступной среде.
+- Нейросетевые/кислотные палитры для таймера — придерживаться **приглушённых** цветов проекта.
