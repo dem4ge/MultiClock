@@ -227,7 +227,7 @@ class ChessClockViewModel(
     ): List<String> {
         val out = previous.toMutableList()
         while (out.size < ChessClockRules.MAX_PLAYER_COUNT) out.add("")
-        while (out.size > ChessClockRules.MAX_PLAYER_COUNT) out.removeLast()
+        while (out.size > ChessClockRules.MAX_PLAYER_COUNT) out.removeAt(out.lastIndex)
         for (i in domain.players.indices) {
             out[i] = domain.players[i].displayName.orEmpty()
         }
@@ -243,7 +243,7 @@ class ChessClockViewModel(
             val i = out.size
             out.add(i % ChessClockRules.PLAYER_PALETTE_SIZE)
         }
-        while (out.size > ChessClockRules.MAX_PLAYER_COUNT) out.removeLast()
+        while (out.size > ChessClockRules.MAX_PLAYER_COUNT) out.removeAt(out.lastIndex)
         for (i in domain.players.indices) {
             out[i] = domain.players[i].paletteIndex
         }
@@ -338,10 +338,10 @@ class ChessClockViewModel(
             palettes.add(i % ChessClockRules.PLAYER_PALETTE_SIZE)
         }
         while (names.size > ChessClockRules.MAX_PLAYER_COUNT) {
-            names.removeLast()
+            names.removeAt(names.lastIndex)
         }
         while (palettes.size > ChessClockRules.MAX_PLAYER_COUNT) {
-            palettes.removeLast()
+            palettes.removeAt(palettes.lastIndex)
         }
     }
 
